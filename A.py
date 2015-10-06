@@ -1,18 +1,17 @@
-input = open('input.txt', 'r')
-output = open('output.txt', 'w')
-s=input.readline()
-d=input.readline()
-k='0'
-i=0
-while i<len(d):
-    j=0
-    while j<len(d):
-        if d[i]==d[j]  and i!=j:
-            k=d[i]
-        j+=2
-    i+=2
-output.write(k)
+input=open('input.txt', 'r')
+output=open('output.txt', 'w')
+N = int(input.readline())
+s = list(map(int, input.readline().split()))
 
+f = False
 
-input.close()
-output.close()
+for i in range(N):
+    for j in range(N):
+        if i == j:
+            continue
+        if s[i] == s[j]:
+            f = True
+            break
+    if f:
+        break
+print(s[i], file=output)
