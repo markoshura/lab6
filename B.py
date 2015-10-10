@@ -1,19 +1,15 @@
-input=open('input.txt', 'r')
-output= open('output.txt', 'w')
-N = int(input.readline())
-s = list(map(int, input.readline().split()))
-lmin = -1
-for i in range(N):
-    if s[i] > 0:
-        continue
-    itap = i
-    tap = s[i]
-    while itap + 1 < len(s):
-        itap += 1
-        if s[itap] == -tap:
-            if lmin == -1 or lmin > len(s[i:itap]):
-                lmin = len(s[i:itap])
-if lmin == -1:
-    print(0, file=output)
-else:
-    print(lmin, file=output)
++input=open('input.txt', 'r')
++output=open('output.txt', 'w')
++N = int(input.readline())
++lis = list(map(int, input.readline().split()))
++nf = 0
++hf = 0
++for i in range(N):
++    if lis[i] == 5:
++        hf+= 1
++    else:
++        hf -= (lis[i]-5)//5
++        if hf < 0:
++            nf -= hf
++            hf = 0
++print(nf, file=output)
